@@ -1,0 +1,233 @@
+#[1]   DotB1_patch_2018.asm
+    3           0000              .bank $0
+    4                     
+    5                     ;
+    6                     ; Dead of the Brain #1 Patches to print function
+    7                     ;
+    8                     
+    9                     
+   10                     ;
+   11                     ; First, Font will occupy space from $DB00 to $DFFF
+   12                     ; (0x17380 on disk)
+   13                     ;
+   14           DB80      FONT    EQU     $DB80
+   15                     
+   16                     ;-----------
+   17                     ;PATCH1 in code:
+   18                     ;
+   19                     ;  Catch print function just as it reads a text (non-control) byte
+   20                     ;  The patch should decide whether to continue to treat it like Kanji
+   21                     ;  or like ASCII
+   22                     ;
+   23                     
+   24           C4A0              .ORG    $C4A0
+   25                     ;       This is 0x15CA0 on disk
+   26                     
+   27           C4A0              .code
+   28  00:C4A0  4C 60 DA          JMP     PTCH1
+   29                     
+   30                     ;-----------
+   31                     ;PATCH2 in code:
+   32                     ;
+   33           C4CF              .ORG    $C4CF
+   34                     ;       This is 0x15CCF on disk
+   35  00:C4CF  4C 78 DA          JMP     PTCH2
+   36                     
+   37                     ;-----------
+   38                     ;PATCH3 in code:
+   39                     ;
+   40                     ;  Catch print function as it prepares to fetch the graphic representation
+   41                     ;  of the caharacter to print.  The implication is that the patch will
+   42                     ;  supply an alternate 16x16 kanji graphic (but only left half) for ASCII
+   43                     ;  characters
+   44                     ;
+   45           C785              .ORG    $C785
+   46                     ;       This is 0x15F85 on disk
+   47                     
+   48  00:C785  4C 8B DA          JMP     PTCH3
+   49                     
+   50                     ;-----------
+   51                     ;PATCH4 in code:
+   52                     ;
+   53                     ;  Catch print function as it decides how to deal with bit-shift and
+   54                     ;  new tile allocation, before mixing the new graphic tiles with the
+   55                     ;  old ones.
+   56                     ;  The implication here is that ASCII is 8-bits wide, not 12 (or 16)
+   57                     ; 
+   58           C7BD              .ORG    $C7BD
+   59                     ;       This is 0x15FBD on disk
+   60                     
+   61  00:C7BD  4C 9C DA          JMP     PTCH4
+   62                     
+   63                     ;-----------
+   64                     ;PATCH5 in code:
+   65                     ;
+   66                     ;  Catch print function as it tries to adjust the "residual bit shift"
+   67                     ;  value, based on prior value and character width.
+   68                     ;  The implication is that original code assumed 12 pixels wide, but
+   69                     ;  ASCII characters will be 8 pixels wide.
+   70                     ;
+   71           C8ED              .ORG    $C8ED
+   72                     ;       This is 0x160ED on disk
+   73                     
+   74  00:C8ED  4C B2 DA          JMP     PTCH5
+   75                     
+   76                     
+   77                     ;
+   78                     ;------------
+   79                     ; These are variables in use by the routine (so I don't need to steal
+   80                     ; any from the existing routine)
+   81                     ;
+   82                     
+   83           DA5C              .ORG    $DA5C
+   84  00:DA5C            CHARIND:
+   85  00:DA5C  00                .DB     0
+   86                     
+   87  00:DA5D  00        TMPVLO: .DB     0
+   88  00:DA5E  00        TMPVHI: .DB     0
+   89                     
+   90  00:DA5F            ASCIFLAG:
+   91  00:DA5F  00                .DB     0
+   92                     
+   93                     ;-----------
+   94                     ;PATCH1 itself:
+   95                     
+   96           DA60              .ORG    $DA60
+   97                     ;       This is 0x17260 on disk
+   98                     
+   99  00:DA60  8D 26 35  PTCH1:  STA     $3526           ; original instruction
+  100  00:DA63  C9 80             CMP     #$80            ; is it <#$80 (i.e. ASCII) ?
+  101  00:DA65  90 06             BCC     PTCH1A          ; YES, goto PTCH1A
+  102  00:DA67  9C 5F DA          STZ     ASCIFLAG        ; NO, clear the ASCIFLAG
+  103  00:DA6A  4C A3 C4          JMP     $C4A3           ; continue as it nothing happened
+  104                     
+  105  00:DA6D  A9 01     PTCH1A: LDA     #1              ; set the ASCIFLAG
+  106  00:DA6F  8D 5F DA          STA     ASCIFLAG
+  107  00:DA72  AD 26 35          LDA     $3526           ; get value back into 'A' as needed
+  108  00:DA75  4C AD C4          JMP     $C4AD           ; continue (increment pointer)
+  109                     
+  110                     ;----------
+  111                     ;PATCH2 itself:
+  112                     ;       .ORG    $????
+  113  00:DA78  AD 5F DA  PTCH2:  LDA     ASCIFLAG        ; check if we are using ASCII
+  114  00:DA7B  F0 08             BEQ     PTCH2Z          ; if not, return
+  115  00:DA7D  AD 1A 35          LDA     $351A           ; instead of comparing against #$0C,
+  116  00:DA80  C9 08             CMP     #$08            ; compare against width of #$08
+  117  00:DA82  4C D4 C4          JMP     $C4D4
+  118                     
+  119  00:DA85  AD 1A 35  PTCH2Z: LDA     $351A           ; original instruction
+  120  00:DA88  4C D2 C4          JMP     $C4D2           ; continue as if nothing happened
+  121                     
+  122                     
+  123                     ;----------
+  124                     ;PATCH3 itself:
+  125                     ;       .ORG    $????
+  126                     
+  127  00:DA8B  AD 5F DA  PTCH3:  LDA     ASCIFLAG        ; check if we are using ASCII
+  128  00:DA8E  F0 06             BEQ     PTCH3Z          ; if not, return
+  129  00:DA90  20 DB DA          JSR     ASCISTUP        ; do the ASCII SETUP
+  130  00:DA93  4C AB C7          JMP     $C7AB           ; go back to just after Kanji call
+  131                     
+  132  00:DA96  AD 25 35  PTCH3Z: LDA     $3525           ; original instruction
+  133  00:DA99  4C 88 C7          JMP     $C788           ; continue as if nothing happened
+  134                     
+  135                     ;----------
+  136                     ; PATCH4 itself:
+  137                     ;       .ORG    $????
+  138                     
+  139  00:DA9C  8D 7A 35  PTCH4:  STA     $357A           ; original instruction
+  140  00:DA9F  AD 5F DA          LDA     ASCIFLAG        ; check if we are using ASCII
+  141  00:DAA2  F0 08             BEQ     PTCH4Z          ; if not, return
+  142  00:DAA4  AD 7A 35          LDA     $357A
+  143  00:DAA7  C9 08             CMP     #$08            ; compare against #$08, not #$0C
+  144  00:DAA9  4C C2 C7          JMP     $C7C2
+  145                     
+  146  00:DAAC  AD 7A 35  PTCH4Z: LDA     $357A           ; If not ASCII, return to original stream
+  147  00:DAAF  4C C0 C7          JMP     $C7C0
+  148                     
+  149                     
+  150                     ;----------
+  151                     ; PATCH5 itself:
+  152                     ;       .ORG    $????
+  153                     
+  154  00:DAB2  AD 5F DA  PTCH5:  LDA     ASCIFLAG        ; check if we are using ASCII
+  155  00:DAB5  F0 1E             BEQ     PTCH5Z          ; if not, return
+  156  00:DAB7  AD 1A 35          LDA     $351A
+  157  00:DABA  C9 08             CMP     #$08
+  158  00:DABC  90 11             BCC     PTCH5X          ; if less than
+  159  00:DABE  C9 0C     PTCH5A: CMP     #$0C
+  160  00:DAC0  D0 07             BNE     PTCH5B
+  161  00:DAC2  73 29 35          TII     $3529,$3549,$0020
+       00:DAC5  49 35 20  
+       00:DAC8  00        
+  162  00:DAC9  38        PTCH5B: SEC
+  163  00:DACA  E9 08             SBC     #$08
+  164  00:DACC  4C F7 C8          JMP     $C8F7           ; return to middle of code sequence (STA $351A)
+  165                     
+  166  00:DACF  18        PTCH5X: CLC                     ; if less than
+  167  00:DAD0  69 08             ADC     #$08            ; add 8 instead of value in $3518 (from PRINTFLAGS)
+  168  00:DAD2  4C 06 C9          JMP     $C906           ; return to middle of code sequence (STA $351A)
+  169                     
+  170  00:DAD5  AD 1A 35  PTCH5Z: LDA     $351A           ; original instruction
+  171  00:DAD8  4C F0 C8          JMP     $C8F0
+  172                             
+  173                     
+  174  00:DADB            ASCISTUP:                       ; loads ASCII character into $3526 as if it were Kanji
+  175  00:DADB  DA                PHX
+  176  00:DADC  5A                PHY
+  177  00:DADD  AD 26 35          LDA     $3526   ; get ASCII value
+  178  00:DAE0  38                SEC
+  179  00:DAE1  E9 20             SBC     #$20    ; font starts at $20 (space)
+  180  00:DAE3  8D 5C DA          STA     CHARIND
+  181                     
+  182  00:DAE6  AD 5C DA          LDA     CHARIND         ; use CHARIND as index for ASCII value
+  183                     
+  184  00:DAE9  8D 5D DA          STA     TMPVLO          ; get index and place into TMPVLO/HI to calculate offset
+  185  00:DAEC  9C 5E DA          STZ     TMPVHI          ; from bbase of FONT definition
+  186                     
+  187  00:DAEF  0E 5D DA          ASL     TMPVLO          ; Double the offset
+  188  00:DAF2  2E 5E DA          ROL     TMPVHI
+  189                     
+  190  00:DAF5  AD 5D DA          LDA     TMPVLO          ; Add character index again (now, 3 times original)
+  191  00:DAF8  18                CLC
+  192  00:DAF9  6D 5C DA          ADC     CHARIND
+  193  00:DAFC  8D 5D DA          STA     TMPVLO
+  194  00:DAFF  AD 5E DA          LDA     TMPVHI
+  195  00:DB02  69 00             ADC     #$00
+  196  00:DB04  8D 5E DA          STA     TMPVHI
+  197                     
+  198  00:DB07  0E 5D DA          ASL     TMPVLO          ; Double the index again (now 6 times orig)
+  199  00:DB0A  2E 5E DA          ROL     TMPVHI
+  200                     
+  201  00:DB0D  0E 5D DA          ASL     TMPVLO          ; Double the index again (now 12 times orig)
+  202  00:DB10  2E 5E DA          ROL     TMPVHI
+  203                     
+  204  00:DB13  A9 80             LDA     #LOW(FONT)      ; add address of font def'n table
+  205  00:DB15  18                CLC
+  206  00:DB16  6D 5D DA          ADC     TMPVLO
+  207  00:DB19  8D 5D DA          STA     TMPVLO
+  208  00:DB1C  85 70             STA     <$70
+  209  00:DB1E  A9 DB             LDA     #HIGH(FONT)
+  210  00:DB20  6D 5E DA          ADC     TMPVHI
+  211  00:DB23  8D 5E DA          STA     TMPVHI
+  212  00:DB26  85 71             STA     <$71
+  213                     
+  214  00:DB28  C2                CLY
+  215  00:DB29  82                CLX
+  216  00:DB2A  B1 70     FNTLP   LDA     [$70],Y
+  217  00:DB2C  9D 29 35          STA     $3529,X
+  218  00:DB2F  E8                INX
+  219  00:DB30  9E 29 35          STZ     $3529,X
+  220  00:DB33  E8                INX
+  221  00:DB34  C8                INY
+  222  00:DB35  C0 0C             CPY     #12             ; 12 decimal (font height)
+  223  00:DB37  D0 F1             BNE     FNTLP
+  224  00:DB39  9E 29 35  FNTLP1  STZ     $3529,X
+  225  00:DB3C  E8                INX
+  226  00:DB3D  E0 20             CPX     #$20
+  227  00:DB3F  D0 F8             BNE     FNTLP1
+  228                             
+  229  00:DB41  7A                PLY
+  230  00:DB42  FA                PLX
+  231  00:DB43  60                RTS
+  232                     
