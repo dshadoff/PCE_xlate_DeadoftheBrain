@@ -31,8 +31,8 @@ A brief overview of the token system:
 
 Control byte used for joypad input (WAITKEY and FASTTEXTKEY tokens):
 
- X | X | X | X | X | X | X | X | Pad button
- - | - | - | - | - | - | - | - | ----------
+ Bit 7 | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 | Pad button
+ ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----------
  X |   |   |   |   |   |   |   | Left
    | X |   |   |   |   |   |   | Down
    |   | X |   |   |   |   |   | Right
@@ -41,4 +41,6 @@ Control byte used for joypad input (WAITKEY and FASTTEXTKEY tokens):
    |   |   |   |   | X |   |   | Select
    |   |   |   |   |   | X |   | II
    |   |   |   |   |   |   | X | I
+
+
 
