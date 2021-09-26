@@ -21,7 +21,7 @@ $TOOLS/filepatch ../track02.iso 0x160ed DotB1_patch_2018.pce 0x8ed 3
 #
 # Main patch:
 #
-$TOOLS/filepatch ../track02.iso 0x1725d DotB1_patch_2018.pce 0x1a5c 0xe8
+$TOOLS/filepatch ../track02.iso 0x1725c DotB1_patch_2018.pce 0x1a5c 0xe8
 #
 #
 # Insert new font
