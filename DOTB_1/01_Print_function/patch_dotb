@@ -3,27 +3,27 @@
 TOOLS=../90_Tools
 
 # Patch 1:
-$(TOOLS)/filepatch ../track02.iso 0x15ca0 DotB1_patch_2018.pce 0x4a0 3
+$TOOLS/filepatch ../track02.iso 0x15ca0 DotB1_patch_2018.pce 0x4a0 3
 #
 # Patch 2:
-$(TOOLS)/filepatch ../track02.iso 0x15ccf DotB1_patch_2018.pce 0x4cf 3
+$TOOLS/filepatch ../track02.iso 0x15ccf DotB1_patch_2018.pce 0x4cf 3
 #
 # Patch 3:
-$(TOOLS)/filepatch ../track02.iso 0x15f85 DotB1_patch_2018.pce 0x785 3
+$TOOLS/filepatch ../track02.iso 0x15f85 DotB1_patch_2018.pce 0x785 3
 #
 # (Patch 4 is deprecated)
 #
 # Patch 5:
-$(TOOLS)/filepatch ../track02.iso 0x160ed DotB1_patch_2018.pce 0x8ed 3
+$TOOLS/filepatch ../track02.iso 0x160ed DotB1_patch_2018.pce 0x8ed 3
 #
 #
 #
 #
 # Main patch:
 #
-$(TOOLS)/filepatch ../track02.iso 0x1725d DotB1_patch_2018.pce 0x1a5c 0xe8
+$TOOLS/filepatch ../track02.iso 0x1725d DotB1_patch_2018.pce 0x1a5c 0xe8
 #
 #
 # Insert new font
 #
-$(TOOLS)/filepatch ../track02.iso 0x17380 NewFont8x12.bin 0x0 0x480
+$TOOLS/filepatch ../track02.iso 0x17380 NewFont8x12.bin 0x0 0x480
