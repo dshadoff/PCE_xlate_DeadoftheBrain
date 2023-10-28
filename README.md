@@ -4,8 +4,9 @@ Dead of the Brain 1 & 2 was the last official game to be released for the PC Eng
 in 1999.  Originally released for Japanese PCs such as MSX, FM Towns and PC-98, this
 is a visual novel with horror overtones.
 
-This repository will eventually hold notes from the translation of both Dead of the Brain 1
-and Dead of the Brain 2, as both games are included on the PC Engine release.
+This repository holds notes from the translation of Dead of the Brain 1 and will
+eventually hold notes from the translation of Dead of the Brain 2, as both games
+are included on the PC Engine release.
 
 I started this translation many years ago, and changed approaches several times
 along the way.
@@ -28,11 +29,3 @@ AdaFruit RP2040 Macropad was used for some formatting; keys were programmed for 
 and also for counting the specific number of characters per line, to allow for hand-formatting of
 fixed width font text.
  
-Credits:
---------
-
-| Member | Role |
-| --- | --- |
-| David Shadoff | Script extract/Rough Translation (English)/insertion & timing/unit test and some print function work |
-| Tomaitheous/turboxray | Print Function Hacking |
-| Kazumi Watanabe | Translation review & corrections (English) |
