@@ -1,25 +1,28 @@
 ********************************************************************************
 *                             Dead of the Brain 1                              *
 *                          English Translation Patch                           *
-*                              v1.0 (30 Oct 2023)                              *
+*                          vDotB1_1.0E (29 Oct 2023)                           *
 *                                                                              *
 *                         Dave Shadoff -- Hacking and Translation              *
 *                      Kazumi Watanabe -- Translation                          *
 *                            turboxray -- Hacking                              *
 ********************************************************************************
 
+Game Description:
+-----------------
 Cole's friend Doctor Cooger has made an incredible discovery which he wants
-to show Cole but things go awry, causing a zombie rampage which threatens
-to destroy the town, and Cole needs to do whatever is necessary in order to
+to show Cole but things go awry... Then, a zombie rampage which threatens
+to destroy the town and Cole needs to do whatever is necessary in order to
 try to save himself, his girlfriend Sheila, and Doctor Cooger.
 
-Dead of the Brain 1 & 2 was the last official game to be published on the
-PC Engine in Japan in 1999. The first of these two games was released on
-several home computers in Japan (PC-98, FM Towns, X68000, MSX2) early in the
-decade, with Dead of the Brain being released only on PC-98 prior to this
-release.
+Dead of the Brain 1 & 2 was the last official release to be published on the
+PC Engine in Japan in 1999, and consists of two complete games.
 
-The game is done in a Visual Novel style, similar to a point-and-click
+The first of these two games was released on several home computers in
+Japan (PC-98, FM Towns, X68000, MSX2) early in the 1990s, with Dead
+of the Brain 2 being released only on PC-98 prior to this release.
+
+The games are done in a Visual Novel style, similar to a point-and-click
 adventure. You control Cole's actions as he tries to figure out how to save
 himself and his friends.
 
@@ -27,8 +30,19 @@ There are some graphic scenes of violence and sexual situations in this game.
 For this reason, the game carries an "18+" rating, and was marked as such in
 Japan.
 
-This patch fully translates the first of these two games, BUT NOT THE SECOND,
-into English.
+
+Translation Description:
+------------------------
+Dead of the Brain 1 & 2 consists of two complete games.
+This patch is for "Dead of the Brain 1", making it fully-playable.
+
+Voices have not been re-recorded but matching text displays in all cases, and
+this text has been translated.
+
+
+To apply the xdelta patch, you need to have the data track(s), specifically
+Track 2 read from the disc as Mode 1, 2048-bytes per sector.
+
 
 
 
@@ -141,15 +155,16 @@ If you determine how to access this area, please let me know by one of the
 following:
 
   A) Tag me in a tweet on Twitter (aka 'X'): @Shadoff_d
-     (Note: I may not see a direct message on Twitter)
+     (Note: I may not see direct messages on Twitter)
 
   B) Send me a direct message on romhacking.net - although I check this less
      often
 
   C) I'm also on Discord on various servers, but these change from time to
-time.
+     time.
 
-  D) or email: daves@interlog.com (although this change in the future).
+  D) or email: daves@interlog.com (although this address may change in the
+     future).
 
 
                     ****************************************
@@ -198,9 +213,9 @@ took over 2 years to complete. Finally in October 2023, the English translation
 of Dead of the Brain 1 was completed and play-tested.
 
 The tools built for script extraction/insertion and editing for DotB1 also
-function perfectly for DotB2, but I don't have any plans currently to translate
-the text of DotB2. That script has roughly double the amount of text.
-I would happily work with the right translator however.
+function perfectly for DotB2, but I don't currently have any plans to translate
+the text of DotB2.
+...I would happily work with the right translator however.
 
 However, be forewarned that there is over twice as much text as DotB1.
 
@@ -233,4 +248,4 @@ program, which is bundled with this patch as a convenience.
                     *        VIII. Version History         *
                     ****************************************
 
-v1.0 (30 Oct 2023): Initial release.
+vDotB1_1.0E (29 Oct 2023): Initial release.
