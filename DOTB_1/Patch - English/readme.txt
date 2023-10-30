@@ -82,15 +82,14 @@ be in the 2048-byte sector format used by the PC Engine.
   How to patch ISO+WAV+CUE image
   ------------------------------
 
-If your disc image is already in ISO+WAV+CUE format, you can perform a procedure 
-similar to patching via binpatch.bat:
+If your disc image is already in ISO+WAV+CUE format, you can simply go to
+this ROM patching website, and choose the correct file and enter the xdelta
+file as the patch:
+
+  https://www.marcrobledo.com/RomPatcher.js/
   
-  1. Copy all the disc image files to the "auto_patch" directory.
-  
-  2. Drag-and-drop track 2 of your image onto "isopatch.bat".
-  
-  3. If all goes well, this should produce an ISO+WAV+CUE format disc image in 
-the same directory.
+You will need to amend the CUE file entry/entries to point to the updated
+data track.
 
 If you have an image which is not in the stated format, your best bet might be
 to burn the image to CD-R and re-rip with Turborip. Turborip also works great
@@ -241,8 +240,6 @@ who are also working on their own translations, tools, and other technology.
 It's inspiring to see what people are doing, and their work has motivated me
 to keep pushing forward on this project, time and time again.
 
-Additional thanks goes to SadNES cITy Translations for the Delta Patcher 
-program, which is bundled with this patch as a convenience.
 
                     ****************************************
                     *        VIII. Version History         *
