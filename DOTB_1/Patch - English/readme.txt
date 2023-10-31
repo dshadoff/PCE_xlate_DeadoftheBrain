@@ -68,7 +68,7 @@ game. Unfortunately, patching disc images can be complicated because there are
 many CD image formats in use, and many ways that discs can be ripped
 improperly.
 
-The patch file included here s intended for a game ripped to CUE + WAV + ISO
+The patch file included here is intended for a game ripped to CUE + WAV + ISO
 format (such as would be ripped by Turborip). The "track02" file needs to
 be in the 2048-byte sector format used by the PC Engine.
 
