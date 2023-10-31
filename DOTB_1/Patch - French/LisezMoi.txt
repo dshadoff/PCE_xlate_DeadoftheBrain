@@ -1,0 +1,249 @@
+
+
+********************************************************************************
+*                             Dead of the Brain 1                              *
+*                          Patch de la version française                       *
+*                           vDotB1_1.0F (30 Oct 2023)                          *
+*                                                                              *
+*                         Dave Shadoff -- Hacking                              *
+*                           Shubibiman -- Translation                          *
+*             Kaminari, Laucops & Mooz -- Beta tests                           *
+********************************************************************************
+
+Le docteur Cooger Hamilton, l'ami de Cole, a fait une découverte incroyable
+qu'il veut lui montrer mais tout ne se passe pas comme prévu. Les évènements
+tournent à l'invasion de zombies qui menacent de détruire toute la ville.
+Cole devra tout faire pour s'en sortir avec sa copine Sheila et le docteur
+Cooger Hamilton.
+
+Dead of the Brain 1 & 2 est le tout dernier titre officiel publié sur
+PC Engine au Japon à la surprise générale en 1999, après avoir été annoncé
+pendant plusieurs années dans les magazines spécialisés. Le premier épisode
+était sorti sur plusieurs micros japonais (PC-98, FM Towns, X68000, MSX2) au
+début des années 90, le second n'étant alors sorti que sur PC-98.
+
+Le jeu se présente sous la forme d'un Visual Novel, qui rappelle les
+point-and-click. Vous incarnez Cole dans sa quête de survie.
+
+Le jeu contient des scènes de violence et à caractère sexuel qui en font un
+jeu catégorisé 18+, comme lors de sa sortie officielle au Japon en 1999.
+
+Ce patch contient la version française intégrale du premier épisode. Le
+second épisode fera l'objet d'une nouvelle version du patch.
+
+
+                    ****************************************
+                    *          Table des matières          *
+                    ****************************************
+
+  I.    Instructions d'installation du patch
+  II.   Lancer le jeu
+  III.  Problèmes connus
+  IV.   FAQ
+  V.    Cheat Codes
+  VI.   Commentaires de l'auteur
+  VII.  Remerciements
+  VIII. Histoire de la version
+
+
+                    ****************************************
+                    *    I. Instructions d'installation    *
+                    ****************************************
+
+Pour utiliser cette traduction, vous devez insérer le patch dans une
+image-disque du jeu. Cependant, installer le patch peut s'avérer compliqué
+en raison des différents formats d'images-disques et quand le rip n'a pas été
+réalisé correctement.
+
+Le fichier inclus est destiné à un jeu rippé vers un format CUE+ISO+WAV
+(comme c'est le cas par exemple avec TurboRip). Le fichier "track02" doit
+être au format de sections de 2048-octets utilisé sur PC Engine.
+
+          Track 02 (ex : "Dead of the Brain I & II (J)-02.iso")
+  CRC32:  f50eb992
+  MD5:    3395af50b526b38ea8f75f26d0eed540
+  SHA-1:  84b62e1a1a26cfc8c73648f71fa8b6c66ae37be1
+
+  Comment patcher l'image CUE+ISO+WAV
+  -----------------------------------
+
+Si votre image-disque est déjà au format ISO+WAV+CUE, vous pouvez accéder à
+ce site Web de ROM Patcher, choisir le fichier correct et saisir le fichier
+xdelta:
+
+   https://www.marcrobledo.com/RomPatcher.js/
+  
+Vous devrez modifier la ou les entrées du fichier CUE pour pointer vers le
+fichier de données mis à jour.
+
+Si vous ne disposez pas d'une image-disque dans le format cité, il est
+recommandé de graver l'image sur un CD-R et de la ripper de nouveau avec
+TurboRip. Cet outil fonctionne très bien avec les exemplaires originaux.
+
+TurboRip est téléchargeable à l'adresse ci-dessous :
+https://www.ysutopia.net/forums/index.php?topic=69.0
+
+
+                    ****************************************
+                    *         II. Lancer le jeu            *
+                    ****************************************
+
+Ce patch a été testé sur plusieurs outils de rétrogaming dont MiSTer et
+les émulateurs Mednafen, Ootake et mesen ainsi que sur vrai hardware via 
+l'extension SSDS3 de TerraOnion. Si vous rencontrez des problèmes, nous 
+serions ravis d'en connaître la nature. Notre priorité ira à un 
+fonctionnement optimisé sur vrai hardware.
+
+Vous aurez besoin de la version 3.0 du BIOS, plus particulièrement la version
+japonaise 3.0 (aka Super System Card 3.0).
+
+Ce jeu se joue avec un pad 2 boutons et n'est compatible ni avec la souris, ni
+avec les pads 6 boutons (uniquement en mode "6 boutons").
+
+
+                    ****************************************
+                    *          III. Problèmes connus       *
+                    ****************************************
+
+Pas de problèmes connus à ce stade.
+
+
+                    ****************************************
+                    *               IV. FAQ                *
+                    ****************************************
+  
+Q. Je suis coincé ! Que dois-je faire !?
+
+R. Plusieurs longplays sont disponibles sur YouTube, dont un sur la version 
+PC-98 traduite en anglais. Vous devriez pouvoir trouver facilement les passages
+où vous êtes bloqués en passant en revue la vidéo rapidement. Dans l'ensemble, 
+les actions à réaliser sont les mêmes, mais nous attirons votre attention sur 
+la hitbox dans la version PC Engine, qui n'est pas aussi fine que dans la
+version PC-98.
+
+Il n'y a pas vraiment d'interactions dans le jeu, le gameplay se résume à :
+
+  A) Cliquer dans chaque recoin d'une pièce pour trouver des indices quand vous
+"explorez".
+
+  B) Dans les passages "actions", qui peuvent proposer des "QTE", vous devrez 
+réfléchir vite et faire les bonnes actions rapidement. Même si ça ne paraît pas
+évident au premier abord, les scènes de combat permettent un nombre infini de 
+tentatives.
+
+
+                    ****************************************
+                    *            V. Cheat Codes            *
+                    ****************************************
+
+Lors de l'extraction du texte, Dave Shadoff a découvert un debug/test room
+pour valider certaines choses. Toutefois, il n'a pas trouvé comment y accéder,
+donc cette section n'a pas été traduite.
+
+Si vous arrivez à trouver comment y accéder, vous pouvez contacter Dave Shadoff 
+(personnellement, je n'ai géré que la traduction elle-même, tous les aspects
+techniques ayant été gérés par Dave) de la façon suivante : 
+
+  A) Taggez Dave dans un tweet sur Twitter (aka 'X'): @Shadoff_d
+     (NB: il ne reçoit pas systématiquement les notifications de nouveaux
+     messages privés sur Twitter).
+
+  B) Envoyez-lui un message directement sur romhacking.net
+     (attention : Dave y est moins présent que sur Twitter).
+
+  C) Dave est également présent sur plusieurs serveurs Discord.
+
+  D) Par email: daves@interlog.com (attention : son adresse changera bientôt).
+
+
+                    ****************************************
+                    *      VI. Commentaires de l'auteur    *
+                    ****************************************
+
+Cette traduction était l'une des plus attendues depuis la sortie du jeu en 1999,
+et une des plus demandées.
+
+Les travaux d'extraction du script et de création des fonctions d'affichage ont
+débuté entre 2005 et 2007. 90% du script ont pu être extraits correctement,
+si ce n'est un bloc qui est passé au travers et a été oublié. Toutefois,
+le fonctionnement de la routine d'affichage de fonte variable ne donnait alors
+pas entière satisfaction à Dave Shadoff et Rick Leverton (Malducci).
+
+C'est en 2005 que j'ai été approché par Peperocket, du forum Necstasy, pour
+traduire le script de  Dead of the Brain 2, le script de Dead of the Brain 1
+ayant initialement été pris en charge par une autre personne. Peperocket
+travaillait alors sur le projet avec Dave et Rick. Plus tard, la personne
+responsable de Dead of the Brain 1 n'a plus donné signe de vie, j'ai donc
+également repris le travail de traduction de cet épisode.
+
+La traduction en elle-même a donc débuté en 2005 et a été terminée en 2009,
+avant de débuter le travail d'insertion qui a été très fastidieux car réalisé
+sur des outils obsolètes ou non adaptés dans un premier temps. J'ai donc avancé
+bon an, mal an, avec des périodes de découragement face au temps perdu par des
+considérations techniques. Par ailleurs, chacun des acteurs du projet ayant été
+pris par sa vie personnelle, le projet est resté quasiment en suspend pendant
+plusieurs années, ce qui ne m'a pas empêché d'avancer sur le travail de 
+traduction en mode "sous-marin".
+
+En 2018, Dave Shadoff a relancé le projet et repris contact avec moi. Il avait
+entretemps transposé le code vers de nouveaux outils (SQLite3 et C) et a réécrit
+la fonction d'affichage pour la simplifier au maximum. Il est parti sur une
+solution avec des polices de caractères à largeur fixe.
+
+Les premiers tests ont été encourageants mais nous ont permis de réaliser que
+nous devions apporter des ajustements (retours à la ligne, synchronisation
+entre l'affichage du texte et les voix off dans certains passages).
+
+En parallèle de la traduction française, une version anglaise était prévue
+mais personne ne s'étant porté volontaire entre 2007 et 2018, le projet de 
+version anglaise est resté en suspend pendant toute cette période.
+
+En ce qui me concerne, j'ai contribué entretemps à d'autres projets moins
+ambitieux de traduction de jeux PC Engine, mais j'ai toujours gardé en tête
+le souhait de finaliser ce projet beaucoup plus chronophage que je ne le 
+pensais au début.
+
+Cela nous a permis, à Dave et à moi, de comprendre tous les éléments
+à prendre en compte dans de tels projets, notamment l'édition du texte
+traduit. Les outils développés par Dave m'ont permis de remettre le pied
+à l'étrier à une période où ma motivation pour ce projet était au plus bas.
+
+Nous sommes ravis de pouvoir proposer quasiment simultanément la release
+des versions anglaise et française de ce jeu après cette phase de beta test.
+
+La version française de Dead of the Brain 2 est également en cours.
+La traduction elle-même est déjà faite depuis longtemps (2012).
+L'édition (principalement les retours à la ligne) est finalisée depuis
+octobre 2023 et la phase de beta test a d'ores et déjà commencé.
+
+De son côté, Dave ne prévoit pas de traduire Dead of the Brain 2 en anglais,
+le script étant deux fois plus long. Cette version française sera donc une
+exclusivité totale.
+
+  
+                    ****************************************
+                    *         VII. Remerciements          *
+                    ****************************************
+
+En écho à ses remerciements dans le readme de la version anglaise, je remercie
+chaleureusement Dave d'avoir relancé le projet, d'avoir développé et mis
+à ma disposition des outils qui m'ont permis de travailler plus efficacement,
+mais surtout pour tout son soutien, sa réactivité et sa disponibilité.
+
+Je tiens également à remercier tout particulièrement Peperocket de m'avoir
+parlé de ce projet lors de notre première rencontre en 2005.
+
+Je remercie Kaminari, Laucops et Mooz pour le beta test et leur implication.
+
+Je n'oublie pas la communauté du forum Necstasy pour leurs encouragements.
+
+Même si je ne suis pas développeur moi-même, je remercie toute la communauté
+de développeurs travaillant sur PC Engine pour tout leur travail, qui m'a
+entre autre permis de travailler sur ce type de projet.
+
+
+                    ****************************************
+                    *        VIII. Version History         *
+                    ****************************************
+
+vDotB1_1.0F (30 Oct 2023): Release initiale.
